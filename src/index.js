@@ -23,6 +23,7 @@ class VehReadWrite {
           this.uploader.update(this.opts.deviceID, reading);
           this.lastReading = time;
           console.clear();
+          global.gc();
           console.log(reading);
         }
     }
