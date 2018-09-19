@@ -8,6 +8,7 @@ class VehReadWrite {
         this.reader = new p1Reader(opts); //start reader with opts
         this.uploader = new uploader(opts);
         this.reading = this.reading.bind(this);
+        this.lastReading = 0;
     }
 
     start() {
@@ -16,9 +17,14 @@ class VehReadWrite {
     }
 
     async reading(data) {
-        let reading = this.convertData(data);
-        console.log(reading);
-        await this.uploader.update(this.opts.deviceID, reading);
+        const time = new Date().getTime();
+        if(time > this.lastReading + 10 * 1000) { //rate limit to 10 secs
+          let reading = this.convertData(data);
+          this.uploader.update(this.opts.deviceID, reading);
+          this.lastReading = time;
+          console.clear();
+          console.log(reading);
+        }
     }
 
     error(err) {
@@ -26,8 +32,7 @@ class VehReadWrite {
     }
 
     convertData(data) {
-
-      let reading = {
+      const reading = {
         timestamp: data.timestamp,
         electricityReceived : {
             total: data.electricity.received.tariff1.reading + data.electricity.received.tariff2.reading,
