@@ -14,7 +14,7 @@ async function go(){
   console.log(keyPair);
 
   //st
-  let vehReadWrite = new VehReadWrite({emulator: true, keyPair: keyPair});
+  let vehReadWrite = new VehReadWrite(keyPair: keyPair});
   //create deviceID
   let deviceID = await vehReadWrite.uploader.registerDevice("SMART_METER", {lat: 51.923514, long: 4.469048}, 100, "office", 5);
   let asset = await vehReadWrite.uploader.getDeviceInfo(deviceID);
