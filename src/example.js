@@ -21,6 +21,8 @@ async function go(){
   console.log("////////////DEVICE");
   console.log(JSON.stringify(asset, null, 2));
 
+  vehReadWrite = null;
+
   //restart rewrite with new deviceID
   vehReadWrite = new VehReadWrite({keyPair: keyPair, deviceID: deviceID});
   console.log(vehReadWrite.opts);
