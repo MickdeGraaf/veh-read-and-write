@@ -4,12 +4,14 @@ import Orm from "bigchaindb-orm";
 
 async function go(){
   //generate a keypair
-  const orm = new Orm( "https://test.bigchaindb.com/api/v1/",
+  const orm = new Orm( "http://128.199.46.166:9984/api/v1/",
                       {  app_id: '3b959424',
                          app_key: '30c12a0e15343d705a7e7ccb6d75f1c0'
                       });
 
   let keyPair = new orm.driver.Ed25519Keypair();
+
+  console.log(keyPair);
 
   //st
   let vehReadWrite = new VehReadWrite({emulator: true, keyPair: keyPair});
@@ -20,7 +22,7 @@ async function go(){
   console.log(JSON.stringify(asset, null, 2));
 
   //restart rewrite with new deviceID
-  vehReadWrite = new VehReadWrite({emulator: true, keyPair: keyPair, deviceID: deviceID});
+  vehReadWrite = new VehReadWrite({keyPair: keyPair, deviceID: deviceID});
   console.log(vehReadWrite.opts);
 
   //start the readwriter

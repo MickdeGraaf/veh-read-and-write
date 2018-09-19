@@ -17,6 +17,7 @@ class VehReadWrite {
 
     async reading(data) {
         let reading = this.convertData(data);
+        console.log(reading);
         await this.uploader.update(this.opts.deviceID, reading);
     }
 
