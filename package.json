@@ -9,7 +9,7 @@
     "example": "npm run build && node --expose_gc ./dist/example.js",
     "clean": "rimraf ./dist",
     "prepublish": "npm run build",
-    "prepare": "npm run build",
+    "prepare": "npm run build"
   },
   "author": "",
   "license": "ISC",
