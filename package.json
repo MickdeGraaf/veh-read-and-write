@@ -1,13 +1,13 @@
 {
   "name": "veh-read-and-write",
-  "version": "0.0.1",
+  "version": "0.1",
   "description": "Reads P1 data and writes it to bigchainDB",
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run clean && babel src -d ./dist",
     "example": "npm run build && node --expose_gc ./dist/example.js",
-    "clean": "rimraf dist",
+    "clean": "rimraf ./dist",
     "prepublish": "npm run build",
     "prepare": "npm run build",
   },
