@@ -34,7 +34,7 @@ class VehReadWrite {
 
     convertData(data) {
       const reading = {
-        timestamp: data.timestamp,
+        lastUpdate: Date.now(),
         electricityReceived : {
             total: data.electricity.received.tariff1.reading + data.electricity.received.tariff2.reading,
             tarrif1: data.electricity.received.tariff1.reading,
